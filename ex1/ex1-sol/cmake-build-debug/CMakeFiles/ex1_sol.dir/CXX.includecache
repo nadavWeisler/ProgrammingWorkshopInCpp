@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.cpp
+complex
+-
+Activation.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+Matrix.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
+Matrix.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+Activation.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+iostream
+-
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp
+MlpNetwork.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
+Dense.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
+
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
+Matrix.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+Digit.h
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
+

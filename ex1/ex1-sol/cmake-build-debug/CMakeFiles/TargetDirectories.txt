@@ -1,0 +1,3 @@
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/ex1_sol.dir
+/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/edit_cache.dir
