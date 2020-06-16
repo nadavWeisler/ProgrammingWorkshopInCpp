@@ -1,0 +1,165 @@
+==4798== Memcheck, a memory error detector
+==4798== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4798== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==4798== Command: in/mlpnetwork param/w1 param/w2 param/w3 param/w4 param/b1 param/b2 param/b3 param/b4
+==4798== Parent PID: 4776
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10BC98: loadParameters(char**, Matrix*, Matrix*) (main.cpp:81)
+==4798==    by 0x10C27F: main (main.cpp:162)
+==4798==  Address 0x4d9dc80 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10C231: main (main.cpp:160)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10BD05: loadParameters(char**, Matrix*, Matrix*) (main.cpp:82)
+==4798==    by 0x10C27F: main (main.cpp:162)
+==4798==  Address 0x4d9ddc0 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10C258: main (main.cpp:161)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B472: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:12)
+==4798==    by 0x10B703: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:24)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4e8e9f0 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B44F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B703: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:24)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B489: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:13)
+==4798==    by 0x10B703: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:24)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4e8ea40 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B45F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B703: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:24)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B472: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:12)
+==4798==    by 0x10B734: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:25)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4ef0d10 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B44F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B734: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:25)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B489: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:13)
+==4798==    by 0x10B734: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:25)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4ef0d60 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B45F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B734: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:25)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B472: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:12)
+==4798==    by 0x10B765: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:26)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4ef8f30 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B44F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B765: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:26)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B489: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:13)
+==4798==    by 0x10B765: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:26)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4ef8f80 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B45F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B765: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:26)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B472: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:12)
+==4798==    by 0x10B796: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:27)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4efa4a0 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B44F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B796: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:27)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== Mismatched free() / delete / delete []
+==4798==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==4798==    by 0x10A6C7: Matrix::operator=(Matrix const&) (Matrix.cpp:103)
+==4798==    by 0x10B489: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:13)
+==4798==    by 0x10B796: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:27)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798==  Address 0x4efa4f0 is 0 bytes inside a block of size 4 alloc'd
+==4798==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==4798==    by 0x10A403: Matrix::Matrix(int, int) (Matrix.cpp:22)
+==4798==    by 0x10A471: Matrix::Matrix() (Matrix.cpp:32)
+==4798==    by 0x10B45F: Dense::Dense(Matrix const&, Matrix const&, ActivationType) (Dense.cpp:10)
+==4798==    by 0x10B796: MlpNetwork::operator()(Matrix const&) (MlpNetwork.cpp:27)
+==4798==    by 0x10C017: mlpCli(MlpNetwork&) (main.cpp:125)
+==4798==    by 0x10C2AB: main (main.cpp:166)
+==4798== 
+==4798== 
+==4798== HEAP SUMMARY:
+==4798==     in use at exit: 0 bytes in 0 blocks
+==4798==   total heap usage: 394 allocs, 394 frees, 10,000,736 bytes allocated
+==4798== 
+==4798== All heap blocks were freed -- no leaks are possible
+==4798== 
+==4798== For counts of detected and suppressed errors, rerun with: -v
+==4798== ERROR SUMMARY: 88 errors from 10 contexts (suppressed: 0 from 0)

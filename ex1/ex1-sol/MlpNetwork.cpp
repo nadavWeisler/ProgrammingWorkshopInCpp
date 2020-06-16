@@ -31,7 +31,7 @@ Digit MlpNetwork::operator()(const Matrix& img)
 	float maxValue = 0;
 	unsigned int maxIndex = 0;
 
-	for(int i = 0; i < matrix.getRows() * matrix.getCols(); ++i)
+	for(int i = 0; i < matrix.getRows() * matrix.getCols(); i++)
 	{
 		if(matrix[i] > maxValue)
 		{

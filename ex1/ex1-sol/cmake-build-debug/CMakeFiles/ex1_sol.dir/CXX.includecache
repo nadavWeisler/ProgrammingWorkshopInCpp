@@ -6,37 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
 Matrix.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
 Matrix.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
 Activation.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
 iostream
 -
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
 Matrix.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
 Digit.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h
 
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp
 fstream
 -
 Matrix.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h
 Activation.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h
 Dense.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h
 MlpNetwork.h
-/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
+/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h
 

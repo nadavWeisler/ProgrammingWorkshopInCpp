@@ -31,7 +31,7 @@ Matrix Activation::operator()(const Matrix& inputMatrix)
 	Matrix newMatrix(inputMatrix);
 	if (this->_activationType == Relu)
 	{
-		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); ++i)
+		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); i++)
 		{
 			if (inputMatrix[i] < 0)
 			{
@@ -42,11 +42,11 @@ Matrix Activation::operator()(const Matrix& inputMatrix)
 	else if (this->_activationType == Softmax)
 	{
 		float sum = 0;
-		for (int i = 0; i < inputMatrix.getCols() * inputMatrix.getRows(); ++i)
+		for (int i = 0; i < inputMatrix.getCols() * inputMatrix.getRows(); i++)
 		{
 			sum += std::exp(inputMatrix[i]);
 		}
-		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); ++i)
+		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); i++)
 		{
 			newMatrix[i] = ((1 / sum) * std::exp(inputMatrix[i]));
 		}

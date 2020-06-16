@@ -149,22 +149,44 @@ void mlpCli(MlpNetwork &mlp)
  * @param argv args values
  * @return program exit status code
  */
-int main(int argc, char **argv)
+//int main(int argc, char **argv)
+//{
+//    if(argc != ARGS_COUNT)
+//    {
+//        usage();
+//        exit(EXIT_FAILURE);
+//    }
+//
+//    Matrix weights[MLP_SIZE];
+//    Matrix biases[MLP_SIZE];
+//    loadParameters(argv, weights, biases);
+//
+//    MlpNetwork mlp(weights, biases);
+//
+//    mlpCli(mlp);
+//
+//
+//    return EXIT_SUCCESS;
+//}
+int main()
 {
-    if(argc != ARGS_COUNT)
-    {
-        usage();
-        exit(EXIT_FAILURE);
-    }
-
-    Matrix weights[MLP_SIZE];
-    Matrix biases[MLP_SIZE];
-    loadParameters(argv, weights, biases);
-
-    MlpNetwork mlp(weights, biases);
-
-    mlpCli(mlp);
+//    Matrix weights[MLP_SIZE];
+//    Matrix biases[MLP_SIZE];
+//
+//    weights[0](2,2);
+//    weights[0][1] = 1;
+//    weights[1][0] = 1;
+//    weights[1][1] = 1;
+//    weights[1](3,3);
+//    weights[2](2,2);
+//    weights[3](1,1);
 
 
-    return EXIT_SUCCESS;
+    auto mat = new Matrix(4,4);
+    (*mat)(2,2) = 2;
+    auto mat2 = new Matrix(*mat);
+    (*mat)(1,1) = 2;
+    std::cout << *mat2;
+    delete(mat);
+    delete(mat2);
 }
