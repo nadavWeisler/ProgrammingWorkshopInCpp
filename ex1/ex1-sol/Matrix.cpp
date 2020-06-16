@@ -37,11 +37,7 @@ Matrix::Matrix() : Matrix(DEFAULT_ROWS, DEFAULT_COLS) {
  * Copy constructor
  * @param otherMatrix	Matrix
  */
-Matrix::Matrix(const Matrix &otherMatrix) {
-//    this->_dims.rows = otherMatrix.getRows();
-//    this->_dims.cols = otherMatrix.getCols();
-    this->_dims = otherMatrix._dims;
-    this->_mat = new float[otherMatrix.getRows() * otherMatrix.getCols()];
+Matrix::Matrix(const Matrix &otherMatrix) : Matrix(otherMatrix.getRows(), otherMatrix.getCols()) {
     for (int i = 0; i < (otherMatrix.getCols() * otherMatrix.getRows()); i++) {
         this->_mat[i] = otherMatrix[i];
     }

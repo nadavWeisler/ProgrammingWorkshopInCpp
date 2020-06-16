@@ -50,7 +50,7 @@ Activation Dense::getActivation() const
  */
 Matrix Dense::operator()(const Matrix& inputMatrix) const
 {
-	return (getWeights() * inputMatrix) + getBias();
+	return this->getActivation()((getWeights() * inputMatrix) + getBias());
 }
 
 
