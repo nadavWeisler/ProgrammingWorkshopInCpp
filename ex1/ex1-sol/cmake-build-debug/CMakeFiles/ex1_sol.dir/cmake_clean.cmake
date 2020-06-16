@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ex1_sol.dir/Dense.cpp.o"
   "CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
   "CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
+  "CMakeFiles/ex1_sol.dir/main.cpp.o"
   "ex1_sol.exe"
   "ex1_sol.pdb"
   "libex1_sol.dll.a"

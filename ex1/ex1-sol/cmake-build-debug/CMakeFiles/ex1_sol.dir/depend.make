@@ -20,3 +20,10 @@ CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: ../Matrix.h
 CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: ../MlpNetwork.cpp
 CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: ../MlpNetwork.h
 
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../Activation.h
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../Dense.h
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../Digit.h
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../Matrix.h
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../MlpNetwork.h
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../main.cpp
+

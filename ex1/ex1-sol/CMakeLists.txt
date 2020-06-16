@@ -3,4 +3,5 @@ project(ex1_sol)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ex1_sol Matrix.cpp Dense.cpp MlpNetwork.cpp Activation.cpp)
+
+add_executable(ex1_sol main.cpp MlpNetwork.cpp MlpNetwork.h Matrix.cpp Matrix.h Digit.h Dense.cpp Dense.h  Activation.cpp Activation.h)

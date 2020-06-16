@@ -92,6 +92,9 @@
 		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h">
 			<Option target="ex1_sol"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h">
+			<Option target="ex1_sol"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
@@ -102,6 +105,9 @@
 			<Option target="ex1_sol"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h">
+			<Option target="ex1_sol"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/CMakeLists.txt">

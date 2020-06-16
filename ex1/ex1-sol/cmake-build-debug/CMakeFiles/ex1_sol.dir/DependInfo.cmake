@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.cpp" "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/ex1_sol.dir/Dense.cpp.o"
   "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.cpp" "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
   "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp" "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
+  "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp" "/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles/ex1_sol.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

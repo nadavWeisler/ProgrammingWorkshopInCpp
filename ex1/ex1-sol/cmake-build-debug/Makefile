@@ -231,6 +231,33 @@ MlpNetwork.cpp.s:
 	$(MAKE) -f CMakeFiles/ex1_sol.dir/build.make CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s
 .PHONY : MlpNetwork.cpp.s
 
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/ex1_sol.dir/build.make CMakeFiles/ex1_sol.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/ex1_sol.dir/build.make CMakeFiles/ex1_sol.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/ex1_sol.dir/build.make CMakeFiles/ex1_sol.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -252,6 +279,9 @@ help:
 	@echo "... MlpNetwork.o"
 	@echo "... MlpNetwork.i"
 	@echo "... MlpNetwork.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

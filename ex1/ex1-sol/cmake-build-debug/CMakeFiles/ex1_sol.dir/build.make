@@ -57,9 +57,35 @@ include CMakeFiles/ex1_sol.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ex1_sol.dir/flags.make
 
+CMakeFiles/ex1_sol.dir/main.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
+CMakeFiles/ex1_sol.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex1_sol.dir/main.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/main.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp
+
+CMakeFiles/ex1_sol.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex1_sol.dir/main.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp > CMakeFiles/ex1_sol.dir/main.cpp.i
+
+CMakeFiles/ex1_sol.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex1_sol.dir/main.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp -o CMakeFiles/ex1_sol.dir/main.cpp.s
+
+CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
+CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: ../MlpNetwork.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
+	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp
+
+CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp > CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i
+
+CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s"
+	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp -o CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s
+
 CMakeFiles/ex1_sol.dir/Matrix.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
 CMakeFiles/ex1_sol.dir/Matrix.cpp.o: ../Matrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
 	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/Matrix.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.cpp
 
 CMakeFiles/ex1_sol.dir/Matrix.cpp.i: cmake_force
@@ -72,7 +98,7 @@ CMakeFiles/ex1_sol.dir/Matrix.cpp.s: cmake_force
 
 CMakeFiles/ex1_sol.dir/Dense.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
 CMakeFiles/ex1_sol.dir/Dense.cpp.o: ../Dense.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ex1_sol.dir/Dense.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ex1_sol.dir/Dense.cpp.o"
 	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/Dense.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.cpp
 
 CMakeFiles/ex1_sol.dir/Dense.cpp.i: cmake_force
@@ -83,22 +109,9 @@ CMakeFiles/ex1_sol.dir/Dense.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex1_sol.dir/Dense.cpp.s"
 	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.cpp -o CMakeFiles/ex1_sol.dir/Dense.cpp.s
 
-CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
-CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o: ../MlpNetwork.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp
-
-CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp > CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.i
-
-CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp -o CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.s
-
 CMakeFiles/ex1_sol.dir/Activation.cpp.o: CMakeFiles/ex1_sol.dir/flags.make
 CMakeFiles/ex1_sol.dir/Activation.cpp.o: ../Activation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ex1_sol.dir/Activation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ex1_sol.dir/Activation.cpp.o"
 	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ex1_sol.dir/Activation.cpp.o -c /cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.cpp
 
 CMakeFiles/ex1_sol.dir/Activation.cpp.i: cmake_force
@@ -111,21 +124,23 @@ CMakeFiles/ex1_sol.dir/Activation.cpp.s: cmake_force
 
 # Object files for target ex1_sol
 ex1_sol_OBJECTS = \
+"CMakeFiles/ex1_sol.dir/main.cpp.o" \
+"CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o" \
 "CMakeFiles/ex1_sol.dir/Matrix.cpp.o" \
 "CMakeFiles/ex1_sol.dir/Dense.cpp.o" \
-"CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o" \
 "CMakeFiles/ex1_sol.dir/Activation.cpp.o"
 
 # External object files for target ex1_sol
 ex1_sol_EXTERNAL_OBJECTS =
 
+ex1_sol.exe: CMakeFiles/ex1_sol.dir/main.cpp.o
+ex1_sol.exe: CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o
 ex1_sol.exe: CMakeFiles/ex1_sol.dir/Matrix.cpp.o
 ex1_sol.exe: CMakeFiles/ex1_sol.dir/Dense.cpp.o
-ex1_sol.exe: CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o
 ex1_sol.exe: CMakeFiles/ex1_sol.dir/Activation.cpp.o
 ex1_sol.exe: CMakeFiles/ex1_sol.dir/build.make
 ex1_sol.exe: CMakeFiles/ex1_sol.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ex1_sol.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ex1_sol.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ex1_sol.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
