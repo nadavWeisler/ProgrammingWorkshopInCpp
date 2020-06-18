@@ -22,6 +22,20 @@ class Activation
 	 * Activation type
 	 */
 	ActivationType _activationType;
+
+	/**
+	 * Relu activation
+	 * @param matrix 	Matrix
+	 * @return 			Matrix
+	 */
+	static Matrix _relu(const Matrix& matrix);
+
+	/**
+	 * Softmax activation
+	 * @param matrix 	Matrix
+	 * @return 			Matrix
+	 */
+	static Matrix _softmax(const Matrix& matrix);
  public:
 	/**
 	 * Constructor
@@ -41,7 +55,7 @@ class Activation
 	 * @param inputMatrix	Matrix
 	 * @return	Matrix
 	 */
-	Matrix operator()(const Matrix& inputMatrix);
+	Matrix operator()(const Matrix& inputMatrix) const;
 
 };
 

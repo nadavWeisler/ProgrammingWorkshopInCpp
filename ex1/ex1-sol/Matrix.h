@@ -18,14 +18,14 @@ class Matrix
 {
  private:
 	/**
-	 * Matrix dimensions
-	 */
-	MatrixDims _dims{};
-
-	/**
 	 * Matrix array
 	 */
-	float* _mat{};
+	float* _mat;
+
+	/**
+	 * Matrix dimensions
+	 */
+	MatrixDims * _dims;
  public:
 	/**
 	 * Constructs 1*1 Matrix
@@ -134,17 +134,17 @@ class Matrix
 
 	/**
 	 * Brackets indexing
-	 * @param i		Index
+	 * @param index		Index
 	 * @return		this[i]
 	 */
-	float& operator[](int i);
+	float& operator[](int index);
 
 	/**
 	 * Brackets indexing, const
-	 * @param i 	Index
+	 * @param index 	Index
 	 * @return 		this[i]
 	 */
-	const float& operator[](int i) const;
+	const float& operator[](int index) const;
 
 	/**
 	 * Input stream

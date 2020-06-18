@@ -6,9 +6,8 @@
  *	Accepts activation type
  * @param actType ActivationType
  */
-Activation::Activation(ActivationType actType)
+Activation::Activation(ActivationType actType): _activationType(actType)
 {
-	this->_activationType = actType;
 }
 
 /**
@@ -21,35 +20,56 @@ ActivationType Activation::getActivationType()
 }
 
 /**
+ * Relu activation
+ * @param matrix 	Matrix
+ * @return 			Matrix
+ */
+Matrix Activation::_relu(const Matrix& matrix)
+{
+	Matrix newMatrix = Matrix(matrix);
+    for (int i = 0; i < newMatrix.getRows() * newMatrix.getCols(); ++i)
+    {
+        if (newMatrix[i] < 0)
+        {
+			newMatrix[i] = 0;
+        }
+    }
+    return newMatrix;
+}
+
+/**
+ * Softmax activation
+ * @param matrix 	Matrix
+ * @return 			Matrix
+ */
+Matrix Activation::_softmax(const Matrix& matrix)
+{
+	Matrix newMatrix = Matrix(matrix);
+    float count = 0;
+    for (int i = 0; i < matrix.getRows(); ++i)
+    {
+        newMatrix[i] = std::exp(newMatrix[i]);
+		count += newMatrix[i];
+    }
+    newMatrix = (1 / count) * newMatrix;
+
+    return newMatrix;
+}
+
+/**
  *	Parenthesis operator override,
  *	Applies activation function on input.
  * @param inputMatrix	Matrix
  * @return	Matrix
  */
-Matrix Activation::operator()(const Matrix& inputMatrix)
+Matrix Activation::operator()(const Matrix& inputMatrix) const
 {
-	Matrix newMatrix(inputMatrix);
 	if (this->_activationType == Relu)
 	{
-		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); i++)
-		{
-			if (inputMatrix[i] < 0)
-			{
-				newMatrix[i] = 0;
-			}
-		}
+		return Activation::_relu(inputMatrix);
 	}
-	else if (this->_activationType == Softmax)
+	else
 	{
-		float sum = 0;
-		for (int i = 0; i < inputMatrix.getCols() * inputMatrix.getRows(); i++)
-		{
-			sum += std::exp(inputMatrix[i]);
-		}
-		for (int i = 0; i < inputMatrix.getRows() * inputMatrix.getCols(); i++)
-		{
-			newMatrix[i] = ((1 / sum) * std::exp(inputMatrix[i]));
-		}
+		return Activation::_softmax(inputMatrix);
 	}
-	return newMatrix;
 }

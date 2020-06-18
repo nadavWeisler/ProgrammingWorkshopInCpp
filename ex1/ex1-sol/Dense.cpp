@@ -1,45 +1,41 @@
 #include "Dense.h"
-#include "Activation.h"
 
 /**
  * Inits a new layer with given parameters
- * @param _weightMat		Matrix
- * @param _biasMat			Matrix
- * @param _activationType	ActivationType
+ * @param weightMat			Matrix
+ * @param biasMat			Matrix
+ * @param activationType	ActivationType
  */
-Dense::Dense(const Matrix& _weightMat, const Matrix& _biasMat, ActivationType _activationType)
+Dense::Dense(const Matrix &weightMat, const Matrix &biasMat, ActivationType activationType):
+	_weightMatrix(weightMat), _biasMatrix(biasMat), _activation(Activation(activationType))
 {
-	this->weightMatrix = _weightMat;
-	this->bias = _biasMat;
-	this->activationType = _activationType;
 }
 
 /**
  * Returns the weights of this layer
  * @return Weights matrix
  */
-Matrix Dense::getWeights() const
+const Matrix &Dense::getWeights() const
 {
-	return this->weightMatrix;
+	return this->_weightMatrix;
 }
 
 /**
  * Returns the bias of this layer
  * @return 	Bias matrix
  */
-Matrix Dense::getBias() const
+const Matrix &Dense::getBias() const
 {
-	return this->bias;
+	return this->_biasMatrix;
 }
 
 /**
  * Returns the activation function of this layer
  * @return	Activation
  */
-Activation Dense::getActivation() const
+const Activation &Dense::getActivation() const
 {
-	Activation currentActivation(this->activationType);
-	return currentActivation;
+	return this->_activation;
 }
 
 /**
@@ -50,7 +46,10 @@ Activation Dense::getActivation() const
  */
 Matrix Dense::operator()(const Matrix& inputMatrix) const
 {
-	return this->getActivation()((getWeights() * inputMatrix) + getBias());
+	Matrix result = Matrix(inputMatrix);
+    result = (this->_weightMatrix * result) + this->_biasMatrix;
+    result = this->_activation(result);
+    return result;
 }
 
 

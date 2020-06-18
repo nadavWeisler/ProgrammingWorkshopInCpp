@@ -8,111 +8,111 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ex1_sol">
-				<Option output="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/ex1_sol" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 ex1_sol"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="ex1_sol/fast">
-				<Option output="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/ex1_sol" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 ex1_sol/fast"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
+				<Option working_dir="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j6 -f &quot;/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ex1_sol">
+				<Option output="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/ex1_sol" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 ex1_sol"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ex1_sol/fast">
+				<Option output="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/ex1_sol" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 ex1_sol/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.cpp">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Activation.h">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.cpp">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Dense.h">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Digit.h">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.cpp">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/Matrix.h">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/MlpNetwork.h">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/main.cpp">
 			<Option target="ex1_sol"/>
 		</Unit>
-		<Unit filename="/cs/usr/weisler/Desktop/ProgrammingWorkshopInCpp/ex1/ex1-sol/CMakeLists.txt">
+		<Unit filename="/mnt/c/Weisler/Study/StudySemesterB/C/ProgrammingWorkshopInCpp/ex1/ex1-sol/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

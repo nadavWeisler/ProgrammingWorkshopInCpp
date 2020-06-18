@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ex1_sol.dir/main.cpp.o"
-  "CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
-  "CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
-  "CMakeFiles/ex1_sol.dir/Dense.cpp.o"
   "CMakeFiles/ex1_sol.dir/Activation.cpp.o"
-  "ex1_sol.pdb"
+  "CMakeFiles/ex1_sol.dir/Dense.cpp.o"
+  "CMakeFiles/ex1_sol.dir/Matrix.cpp.o"
+  "CMakeFiles/ex1_sol.dir/MlpNetwork.cpp.o"
+  "CMakeFiles/ex1_sol.dir/main.cpp.o"
   "ex1_sol"
+  "ex1_sol.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

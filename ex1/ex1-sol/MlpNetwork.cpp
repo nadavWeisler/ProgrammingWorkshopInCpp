@@ -1,5 +1,7 @@
 #include "MlpNetwork.h"
-#include "Dense.h"
+
+#define DEFAULT_VALUE 0
+#define RESULT_VECTOR_SIZE 10
 
 /**
  * Constructor
@@ -7,10 +9,12 @@
  * @param weights	Weights array
  * @param biases	Biases array
  */
-MlpNetwork::MlpNetwork(Matrix* weights, Matrix* biases)
+MlpNetwork::MlpNetwork(const Matrix* weights, const Matrix* biases) :
+	_l1(Dense(weights[0], biases[0], Relu)),
+	_l2(Dense(weights[1], biases[1], Relu)),
+	_l3(Dense(weights[2], biases[2], Relu)),
+	_l4(Dense(weights[3], biases[3], Softmax))
 {
-	this->_weights = weights;
-	this->_biases = biases;
 }
 
 /**
@@ -19,25 +23,25 @@ MlpNetwork::MlpNetwork(Matrix* weights, Matrix* biases)
  * @param img	Image matrix
  * @return		Digit
  */
-Digit MlpNetwork::operator()(const Matrix& img)
+Digit MlpNetwork::operator()(const Matrix& img) const
 {
-	Dense d1(this->_weights[0], this->_biases[0], Relu);
-	Dense d2(this->_weights[1], this->_biases[1], Relu);
-	Dense d3(this->_weights[2], this->_biases[2], Relu);
-	Dense d4(this->_weights[3], this->_biases[3], Softmax);
+	Digit digit;
+	digit.probability = DEFAULT_VALUE;
+	digit.value = DEFAULT_VALUE;
 
-	Matrix matrix = d4(d3(d2(d1(img))));
+	Matrix matrix = Matrix(img);
+	matrix = this->_l1(matrix);
+	matrix = this->_l2(matrix);
+	matrix = this->_l3(matrix);
+	matrix = this->_l4(matrix);
 
-	float maxValue = 0;
-	unsigned int maxIndex = 0;
-
-	for(int i = 0; i < matrix.getRows() * matrix.getCols(); i++)
+	for (int i = 0; i < RESULT_VECTOR_SIZE; ++i)
 	{
-		if(matrix[i] > maxValue)
+		if (matrix[i] > digit.probability)
 		{
-			maxValue = matrix[i];
-			maxIndex = i;
+			digit.probability = matrix[i];
+			digit.value = i;
 		}
 	}
-	return Digit{maxIndex, maxValue};
+	return digit;
 }

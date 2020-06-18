@@ -3,6 +3,7 @@
 
 #include "Matrix.h"
 #include "Digit.h"
+#include "Dense.h"
 
 #define MLP_SIZE 4
 
@@ -17,13 +18,22 @@ class MlpNetwork
 {
  private:
 	/**
-	 * Weights array
+	 * First layer
 	 */
-	Matrix* _weights{};
+	Dense _l1;
 	/**
-	 * Biases array
+	 * Second layer
 	 */
-	Matrix* _biases{};
+	Dense _l2;
+	/**
+	 * Third layer
+	 */
+	Dense _l3;
+	/**
+	 * Forth layer
+	 */
+	Dense _l4;
+
  public:
 	/**
 	 * Constructor
@@ -31,14 +41,14 @@ class MlpNetwork
 	 * @param weights	Weights array
 	 * @param biases	Biases array
 	 */
-	MlpNetwork(Matrix weights[], Matrix biases[]);
+	MlpNetwork(const Matrix weights[MLP_SIZE], const Matrix biases[MLP_SIZE]);
 	/**
 	 * Parenthesis operator override,
 	 * Applies the entire network on input
 	 * @param img	Image matrix
 	 * @return		Digit
 	 */
-	Digit operator()(const Matrix &img);
+	Digit operator()(const Matrix& img) const;
 };
 
 #endif

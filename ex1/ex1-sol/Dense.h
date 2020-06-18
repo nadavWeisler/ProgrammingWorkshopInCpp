@@ -13,41 +13,41 @@ class Dense
 	/**
 	 * Weights matrix
 	 */
-	Matrix weightMatrix;
+	Matrix _weightMatrix;
 	/**
 	 * Bias matrix
 	 */
-	Matrix bias;
+	Matrix _biasMatrix;
 	/**
 	 * Activation type
 	 */
-	ActivationType activationType;
+	Activation _activation;
  public:
 	/**
 	 * Inits a new layer with given parameters
-	 * @param _weightMat		Matrix
-	 * @param _biasMat			Matrix
-	 * @param _activationType	ActivationType
+	 * @param weightMat		Matrix
+	 * @param biasMat			Matrix
+	 * @param activationType	ActivationType
 	 */
-	Dense(const Matrix &_weightMat, const Matrix &_biasMat, ActivationType _activationType);
+	Dense(const Matrix &weightMat, const Matrix &biasMat, ActivationType activationType);
 
 	/**
 	 * Returns the weights of this layer
 	 * @return Weights matrix
 	 */
-	Matrix getWeights() const;
+	const Matrix &getWeights() const;
 
 	/**
 	 * Returns the bias of this layer
 	 * @return 	Bias matrix
 	 */
-	Matrix getBias() const;
+	const Matrix &getBias() const;
 
 	/**
 	 * Returns the activation function of this layer
 	 * @return	Activation
 	 */
-	Activation getActivation() const;
+	const Activation &getActivation() const;
 
 	/**
 	 * Parenthesis operator override,
