@@ -17,9 +17,11 @@ class RecommenderSystem
 	/**
 	 *
 	 */
-	std::unordered_map<std::string, std::map<std::string, int>> movieRating;
+	std::unordered_map<std::string, std::unordered_map<std::string, int>> movieRating;
 
  public:
+ 	RecommenderSystem();
+
 	/**
 	 *
 	 * @param moviesAttributesFilePath
