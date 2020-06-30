@@ -163,7 +163,7 @@ private:
      * @return              Movie score for user
      */
     double _predictUserScoreDouble(const std::string &movieName, const std::string &userName,
-                                   int k);
+                                  int k);
 
 public:
     /**

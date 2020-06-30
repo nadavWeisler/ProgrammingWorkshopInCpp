@@ -416,13 +416,7 @@ bool RecommenderSystem::_updateRankLine(std::istringstream &stringStream,
     this->userRating.insert(oneUserRank);
     return true;
 }
-/**
- * @brief predict movie score for user with result double
- * @param movieName     movie name
- * @param userName      user name
- * @param k             number
- * @return              Movie score for user
- */
+
 double RecommenderSystem::_predictUserScoreDouble(const std::string &movieName,
                                                   const std::string &userName, int k)
 {

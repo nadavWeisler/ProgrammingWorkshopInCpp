@@ -3,4 +3,4 @@ project(ex2_sol)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(ex2_sol RecommenderSystem.cpp RecommenderSystem.h)
+add_executable(ex2_sol main.cpp RecommenderSystem.cpp RecommenderSystem.h)
