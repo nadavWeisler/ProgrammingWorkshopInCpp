@@ -19,8 +19,9 @@
  */
 RecommenderSystem::RecommenderSystem()
 {
-    this->movieRating = std::map<std::string, std::vector<double>>();
-    this->userRating = std::map<std::string, std::map<std::string, double>>();
+    this->movieRating = std::unordered_map<std::string, std::vector<double>>();
+    this->userRating = std::unordered_map<std::string,
+            std::unordered_map<std::string, double>>();
     this->movies = std::vector<std::string>();
 }
 
@@ -31,7 +32,8 @@ RecommenderSystem::RecommenderSystem()
  */
 bool RecommenderSystem::_getMovieSplit(std::string &line)
 {
-    std::pair<std::string, std::vector<double>> result = std::pair<std::string, std::vector<double>>();
+    std::pair<std::string, std::vector<double>> result =
+            std::pair<std::string, std::vector<double>>();
     result.second = std::vector<double>();
     int count = 0;
     std::istringstream stringStream(line);
@@ -70,11 +72,11 @@ bool RecommenderSystem::_getMovieSplit(std::string &line)
  * @param map Calculate average
  * @return	Average
  */
-double RecommenderSystem::_getAvg(const std::map<std::string, double> &mapHash)
+double RecommenderSystem::_getAvg(const std::unordered_map<std::string, double> &mapHash)
 {
     double sum = 0;
     double count = 0;
-    for (std::pair<std::string, double> p: mapHash)
+    for (const auto &p: mapHash)
     {
         if (p.second != 0)
         {
@@ -90,12 +92,13 @@ double RecommenderSystem::_getAvg(const std::map<std::string, double> &mapHash)
  * @param userName	User name
  * @param avg		Average
  */
-std::map<std::string, double>
-RecommenderSystem::_getNormalizeUserRank(const std::string &userName, double avg)
+std::unordered_map<std::string, double> RecommenderSystem::_getNormalizeUserRank(
+        const std::string &userName, double avg)
 {
-    std::map<std::string, double> result = std::map<std::string, double>();
+    std::unordered_map<std::string, double> result =
+            std::unordered_map<std::string, double>();
     double insertValue;
-    for (std::pair<std::string, double> p : this->userRating[userName])
+    for (const auto &p : this->userRating[userName])
     {
         insertValue = 0;
         if (p.second != 0)
@@ -118,10 +121,10 @@ RecommenderSystem::_multiplyVectorInScalar(const std::vector<double> &vec, doubl
 {
     std::vector<double> result = std::vector<double>();
     int count = 0;
-    for (double num: vec)
+    for (size_t i = 0, size = vec.size(); i != size; ++i)
     {
         result.resize(count + 1);
-        result.at(count) = num * scalar;
+        result.at(count) = vec[i] * scalar;
         count++;
     }
     return result;
@@ -133,17 +136,18 @@ RecommenderSystem::_multiplyVectorInScalar(const std::vector<double> &vec, doubl
  * @param vec2		Vector
  * @return			Vector sum
  */
-std::vector<double>
-RecommenderSystem::_addVectorToAnother(std::vector<double> &vec1, const std::vector<double> &vec2)
+std::vector<double> RecommenderSystem::_addVectorToAnother(
+        std::vector<double> &vec1,
+        std::vector<double> && vec2)
 {
     std::vector<double> result = std::vector<double>();
-    for (int i = 0; i < int(vec2.size()); i++)
+    for (size_t i = 0, size = vec2.size(); i != size; ++i)
     {
         result.resize(i + 1);
-        double addValue = vec2.at(i);
+        double addValue = vec2[i];
         if (vec1.size() == vec2.size())
         {
-            addValue += vec1.at(i);
+            addValue += vec1[i];
         }
         result.at(i) = addValue;
     }
@@ -155,17 +159,18 @@ RecommenderSystem::_addVectorToAnother(std::vector<double> &vec1, const std::vec
  * @param userRanks
  * @return
  */
-std::vector<double>
-RecommenderSystem::_getPreferenceVector(const std::map<std::string, double> &normelizeUserRanks)
+std::vector<double> RecommenderSystem::_getPreferenceVector(
+        std::unordered_map<std::string, double> && normelizeUserRanks)
 {
     std::vector<double> resultVector = std::vector<double>();
-    for (std::pair<std::string, double> p: normelizeUserRanks)
+    for (const auto &p: normelizeUserRanks)
     {
         if (p.second != 0)
         {
-            std::vector<double> movieVector = _multiplyVectorInScalar(
-                    this->movieRating.at(p.first), p.second);
-            resultVector = _addVectorToAnother(resultVector, movieVector);
+            resultVector = _addVectorToAnother(
+                    resultVector,
+                    std::move(_multiplyVectorInScalar(
+                            this->movieRating[p.first], p.second)));
         }
     }
     return resultVector;
@@ -179,9 +184,9 @@ RecommenderSystem::_getPreferenceVector(const std::map<std::string, double> &nor
 double RecommenderSystem::_getNorm(const std::vector<double> &vec)
 {
     double sum = 0;
-    for (double i : vec)
+    for (size_t i = 0, size = vec.size(); i != size; ++i)
     {
-        sum += pow(i, SQUARE);
+        sum += pow(vec[i], SQUARE);
     }
     return sqrt(sum);
 }
@@ -192,13 +197,13 @@ double RecommenderSystem::_getNorm(const std::vector<double> &vec)
  * @param vector2 		Vector2
  * @return				Scalar multiplication
  */
-double RecommenderSystem::_getScalarMultiplication(std::vector<double> vector1,
-                                                   std::vector<double> vector2)
+double RecommenderSystem::_getScalarMultiplication(const std::vector<double> &vector1,
+                                                   const std::vector<double> &vector2)
 {
     double result = 0;
-    for (int i = 0; i < int(vector1.size()); i++)
+    for (size_t i = 0, size = vector1.size(); i != size; ++i)
     {
-        result += (vector1.at(i) * vector2.at(i));
+        result += (vector1[i] * vector2[i]);
     }
     return result;
 }
@@ -222,17 +227,19 @@ double RecommenderSystem::_getAngleBetweenVectors(const std::vector<double> &vec
  * @param userMap
  * @return
  */
-std::string RecommenderSystem::_getSuggestedMovie(const std::vector<double> &preferenceVector,
-                                                  const std::map<std::string, double> &userMap)
+std::string RecommenderSystem::_getSuggestedMovie(
+        std::vector<double> && preferenceVector,
+        std::unordered_map<std::string, double> && userMap)
 {
     std::string result = std::string();
     double bestScore = -1;
     double currentValue;
-    for (std::pair<std::string, double> p: userMap)
+    for (const auto &p: userMap)
     {
         if (p.second == 0)
         {
-            currentValue = _getAngleBetweenVectors(preferenceVector, this->movieRating.at(p.first));
+            currentValue = _getAngleBetweenVectors(preferenceVector,
+                                                   this->movieRating[p.first]);
             if (currentValue > bestScore)
             {
                 bestScore = currentValue;
@@ -377,7 +384,7 @@ bool RecommenderSystem::_updateRankLine(std::istringstream &stringStream,
                                         std::vector<std::string> const &movieNames)
 {
     std::pair<std::string, double> movieRate;
-    std::pair<std::string, std::map<std::string, double>> oneUserRank;
+    std::pair<std::string, std::unordered_map<std::string, double>> oneUserRank;
     int count = 0;
     while (!stringStream.eof())
     {
@@ -416,6 +423,7 @@ bool RecommenderSystem::_updateRankLine(std::istringstream &stringStream,
     this->userRating.insert(oneUserRank);
     return true;
 }
+
 /**
  * @brief predict movie score for user with result double
  * @param movieName     movie name
@@ -426,24 +434,24 @@ bool RecommenderSystem::_updateRankLine(std::istringstream &stringStream,
 double RecommenderSystem::_predictUserScoreDouble(const std::string &movieName,
                                                   const std::string &userName, int k)
 {
-    std::map<double, std::string, std::greater<>> similarMovies = std::map<double, std::string, std::greater<>>();
-    std::vector<double> newMovieVec = this->movieRating[movieName];
-    std::map<std::string, double> usersMap = this->userRating[userName];
+    std::map<double, std::string, std::greater<>> similarMovies =
+            std::map<double, std::string, std::greater<>>();
+    std::vector<double> &newMovieVec = this->movieRating[movieName];
+    std::unordered_map<std::string, double> &usersMap = this->userRating[userName];
     if (newMovieVec.empty() || usersMap.empty())
     {
         return FAIL;
     }
-    for (std::pair<std::string, double> p: usersMap)
+    for (const auto &p: usersMap)
     {
         if (p.second != 0)
         {
-            std::vector<double> currentMovieVector = this->movieRating[p.first];
-            double angle = _getAngleBetweenVectors(newMovieVec, currentMovieVector);
+            double angle = _getAngleBetweenVectors(newMovieVec,
+                                                   this->movieRating[p.first]);
             similarMovies.insert({angle, p.first});
         }
     }
-
-    return _predictScore(similarMovies, userName, k);
+    return _predictScore(std::move(similarMovies), userName, k);
 }
 
 /**
@@ -468,15 +476,14 @@ int RecommenderSystem::loadData(const std::string &moviePath, const std::string 
  */
 std::string RecommenderSystem::recommendByContent(const std::string &userName)
 {
-    std::map<std::string, double> userMap = this->userRating[userName];
+    std::unordered_map<std::string, double> &userMap = this->userRating[userName];
     if (userMap.empty())
     {
         return USER_NOT_FOUND;
     }
-    std::map<std::string, double> normalizeUserRank = _getNormalizeUserRank(userName,
-                                                                            _getAvg(userMap));
-    std::vector<double> prefVector = _getPreferenceVector(normalizeUserRank);
-    return _getSuggestedMovie(prefVector, userMap);
+    std::vector<double> prefVector = _getPreferenceVector(
+            std::move(_getNormalizeUserRank(userName, _getAvg(userMap))));
+    return _getSuggestedMovie(std::move(prefVector), std::move(userMap));
 }
 
 /**
@@ -500,21 +507,21 @@ float RecommenderSystem::predictMovieScoreForUser(const std::string &movieName,
  * @return					Score
  */
 double RecommenderSystem::_predictScore(std::map<double, std::string, std::greater<>>
-                                        &similarMovies,
+                                        && similarMovies,
                                         const std::string &userName, int k)
 {
     double up = 0;
     double down = 0;
     int count = 0;
 
-    for (std::pair<double, std::string> p :similarMovies)
+    for (const auto &p :similarMovies)
     {
         if (count == k)
         {
             break;
         }
         count++;
-        up += (p.first * this->userRating.at(userName).at(p.second));
+        up += (p.first * this->userRating[userName][p.second]);
         down += p.first;
     }
 
@@ -529,28 +536,36 @@ double RecommenderSystem::_predictScore(std::map<double, std::string, std::great
  */
 std::string RecommenderSystem::recommendByCF(const std::string &userName, int k)
 {
-    std::map<double, std::vector<std::string>> rates =
-            std::map<double, std::vector<std::string>>();
-    std::map<std::string, double> usersMap = this->userRating.at(userName);
-    if (usersMap.empty())
+    if (this->userRating[userName].empty())
     {
         return USER_NOT_FOUND;
     }
 
+    return _getBestRecommendedMovie(userName, k);
+}
+
+/**
+ * @brief Recommend best movie
+ * @param userName      User name
+ * @param k             number k
+ * @return              string of best movie
+ */
+std::string RecommenderSystem::_getBestRecommendedMovie(const std::string &userName, int k)
+{
     std::string result = std::string();
     double score = -1;
-    for(const std::string& movie: this->movies)
+    for (size_t i = 0, size = this->movies.size(); i != size; ++i)
     {
-        if(this->userRating.at(userName).at(movie) == 0)
+        if (this->userRating[userName][this->movies[i]] == 0)
         {
-            double predictRate = _predictUserScoreDouble(movie, userName, k);
+            double predictRate = _predictUserScoreDouble(this->movies[i],
+                                                         userName, k);
             if (predictRate > score)
             {
                 score = predictRate;
-                result = movie;
+                result = this->movies[i];
             }
         }
     }
-
     return result;
 }

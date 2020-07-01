@@ -16,12 +16,12 @@ private:
     /**
      *	User rating unordered map
      */
-    std::map<std::string, std::map<std::string, double>> userRating;
+    std::unordered_map<std::string, std::unordered_map<std::string, double>> userRating;
 
     /**
      *	Movie rating unordered m
      */
-    std::map<std::string, std::vector<double>> movieRating;
+    std::unordered_map<std::string, std::vector<double>> movieRating;
 
     /**
      * @brief Movie names
@@ -33,21 +33,23 @@ private:
      * @param mapHash Calculate average
      * @return	Average
      */
-    static double _getAvg(const std::map<std::string, double> &mapHash);
+    static double _getAvg(const std::unordered_map<std::string, double> &mapHash);
 
     /**
      *	Normalize user rank
      * @param userName	User name
      * @param avg		Average
      */
-    std::map<std::string, double> _getNormalizeUserRank(const std::string &userName, double avg);
+    std::unordered_map<std::string, double>
+    _getNormalizeUserRank(const std::string &userName, double avg);
 
     /**
      * Get preference vector of user ranks
      * @param userRanks
      * @return
      */
-    std::vector<double> _getPreferenceVector(const std::map<std::string, double> &userRanks);
+    std::vector<double>
+    _getPreferenceVector(std::unordered_map<std::string, double> &&userRanks);
 
     /**
      *	Get movie split
@@ -71,8 +73,16 @@ private:
      * @param vec2		Vector
      * @return			Vector sum
      */
-    static std::vector<double>
-    _addVectorToAnother(std::vector<double> &vec1, const std::vector<double> &vec2);
+    static std::vector<double> _addVectorToAnother(std::vector<double> &vec1,
+                                                   std::vector<double> &&vec2);
+
+    /**
+     * @brief Recommend best movie
+     * @param userName      User name
+     * @param k             number k
+     * @return              string of best movie
+     */
+    std::string _getBestRecommendedMovie(const std::string &userName, int k);
 
     /**
      * Get suggested movie from preference vector user rank
@@ -80,8 +90,8 @@ private:
      * @param userMap
      * @return
      */
-    std::string _getSuggestedMovie(const std::vector<double> &preferenceVector,
-                                   const std::map<std::string, double> &userMap);
+    std::string _getSuggestedMovie(std::vector<double> &&preferenceVector,
+                                   std::unordered_map<std::string, double> &&userMap);
 
     /**
      * Predict score
@@ -90,7 +100,7 @@ private:
      * @param k					int
      * @return					Score
      */
-    double _predictScore(std::map<double, std::string, std::greater<>> &similarMovies,
+    double _predictScore(std::map<double, std::string, std::greater<>> &&similarMovies,
                          const std::string &userName, int k);
 
     /**
@@ -108,8 +118,8 @@ private:
      * @param vector2 		Vector2
      * @return				Scalar multiplication
      */
-    static double
-    _getScalarMultiplication(std::vector<double> vector1, std::vector<double> vector2);
+    static double _getScalarMultiplication(const std::vector<double> &vector1,
+                                           const std::vector<double> &vector2);
 
     /**
      * Get norm of vector
@@ -138,8 +148,8 @@ private:
     * @param line			string
     * @param names			movie names
     */
-    bool
-    _updateRankLine(std::istringstream &stringStream, std::vector<std::string> const &movieNames);
+    bool _updateRankLine(std::istringstream &stringStream,
+                         std::vector<std::string> const &movieNames);
 
     /**
      * Update user ranking by file
@@ -163,7 +173,7 @@ private:
      * @return              Movie score for user
      */
     double _predictUserScoreDouble(const std::string &movieName, const std::string &userName,
-                                  int k);
+                                   int k);
 
 public:
     /**
