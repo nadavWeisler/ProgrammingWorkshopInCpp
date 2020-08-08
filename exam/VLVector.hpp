@@ -1,153 +1,604 @@
 #include <cstdlib>
+#include <stdexcept>
 
 #ifndef EXAM_VLVECTOR_H
 #define EXAM_VLVECTOR_H
-#define DEFAULT_CAPACITY 16
-#define GROWS 2
 
-template<class TYPE>
+#define OUT_OF_BOUND_ERROR "ERROR: out of bound"
+#define DEFAULT_CAPACITY_VALUE 16
+
+/**
+ * @brief           Class represent
+ * @tparam TYPE     Generic type
+ * @tparam CAP      Max stack capacity
+ */
+template<typename TYPE, size_t CAP = DEFAULT_CAPACITY_VALUE>
 class VLVector
 {
 private:
-    TYPE *_values;
-    size_t _capacity = 0;
-    size_t _size = 0;
+    size_t _size;
+    size_t _capacity;
+    size_t _stackCapacity;
+    TYPE _stackValues[CAP];
+    TYPE *_heapValues;
 
-    void _resize()
+    /**
+     * @brief           Resize array
+     * @param newSize   New size
+     */
+    void _resize(size_t newSize)
     {
-        TYPE tmp[] = _deepCopyValues();
-        this->_values = new TYPE[this->_capacity * 2];
-        for (int i = 0; i < this->_capacity; i++)
+        bool needToDelete = this->_capacity != this->_stackCapacity;
+        this->_capacity = this->_growingSize();
+        TYPE *tmp = new TYPE[newSize];
+        if (needToDelete)
         {
-            this->_values[i] = tmp[i];
+            for (size_t i = 0; i < this->_size; ++i)
+            {
+                tmp[i] = this->_heapValues[i];
+            }
+            delete[] this->_heapValues;
         }
-        this->_capacity *= 2;
+        else
+        {
+            for (size_t i = 0; i < this->_size; ++i)
+            {
+                tmp[i] = this->_stackValues[i];
+            }
+        }
+        this->_heapValues = new TYPE[this->_capacity];
+        for (size_t i = 0; i < this->_size; ++i)
+        {
+            this->_heapValues[i] = tmp[i];
+        }
+        delete[]tmp;
+
     }
 
-    void _addNewItem(TYPE *newItem, int index)
+    /**
+     * @brief           Add new item
+     * @param newItem   New item
+     * @param index     Index
+     */
+    void _addNewItem(const TYPE newItem, size_t index)
     {
-        if (this->_values == nullptr)
-        {
-            this->_values = new TYPE[DEFAULT_CAPACITY];
-        }
         if (this->_size == this->_capacity)
         {
-            this->_resize();
-            this->_addNewItem(newItem, index);
+            this->_resize(this->_size + 1);
+            this->_heapValues[index] = newItem;
         }
-        this->_values[index] = newItem;
+        else if (this->_capacity > this->_stackCapacity)
+        {
+            this->_heapValues[index] = newItem;
+        }
+        else
+        {
+            this->_stackValues[index] = newItem;
+        }
+        this->_size++;
     }
 
-    TYPE *_deepCopyValues()
+    /**
+     * @brief   Calculate growing size
+     * @return  Growing size
+     */
+    size_t _growingSize() const
     {
-        TYPE result[] = new TYPE[this->_capacity];
-        for (int i = 0; i < this->_capacity; i++)
-        {
-            result[i] = this->_values[i];
-        }
-        return result;
+        return (3 * (this->_size + 1)) / 2;
     }
 
 public:
-    //Iterator
-    class InputIterator
+    /**
+     * @brief   Iterator class
+     */
+    class Iterator
     {
     private:
-        TYPE *arr;
+        TYPE *cur;
     public:
-        InputIterator(TYPE *p) : arr(p)
+        typedef TYPE &ref;
+        typedef TYPE *pointer;
+        typedef Iterator self;
+
+        /**
+         * @brief Default constructor
+         */
+        Iterator() : cur(nullptr)
         {
+
         }
 
-        InputIterator &operator++()
+        /**
+         * @brief           Copy constructor
+         * @param other     Other constructor
+         */
+        Iterator(const Iterator &other) : cur(other.cur)
         {
-            this->arr++;
+
+        }
+
+        /**
+         * @brief           Another constructor
+         * @param p         TYPE pointer
+         */
+        explicit Iterator(TYPE *p)
+        {
+            this->cur = p;
+        }
+
+        /**
+         * @brief           = operator
+         * @param other     Other iterator
+         * @return          Iterator reference
+         */
+        Iterator &operator=(Iterator other)
+        {
+            this->cur = other.cur;
+        }
+
+        /**
+         * @brief       ++ operator
+         * @return      Iterator
+         */
+        self operator++()
+        {
+            this->cur++;
             return *this;
         }
 
-        InputIterator &operator--()
+        /**
+         * @brief       += operator
+         * @param num   number
+         * @return      Iterator
+         */
+        self operator+=(size_t num)
         {
-            this->arr--;
+            this->cur += num;
             return *this;
         }
 
-        TYPE *operator*()
+        /**
+         * @brief       -- operator
+         * @return      Iterator
+         */
+        self operator--()
         {
-            return *arr;
+            Iterator res = *this;
+            this->cur--;
+            return res;
         }
 
-        bool operator==(const InputIterator &other) const
+        /**
+         * @brief       -= operator
+         * @param num   number
+         * @return      Iterator
+         */
+        self operator-=(size_t num)
         {
-            return *arr == *other.arr;
+            this->cur -= num;
+            return *this;
         }
 
-        bool operator!=(const InputIterator &other) const
+        /**
+         * @brief   -> operator
+         * @return  pointer to TYPE
+         */
+        pointer operator->()
         {
-            return *arr != *other.arr;
+            return this->cur;
+        }
+
+        /**
+         * @brief   * const operator
+         * @return  TYPE reference
+         */
+        ref operator*() const
+        {
+            return *cur;
+        }
+
+        /**
+         * @brief   * operator
+         * @return  TYPE reference
+         */
+        ref operator*()
+        {
+            return *this->cur;
+        }
+
+        /**
+         * @brief           == operator
+         * @param other     Other iterator const reference
+         * @return          true if equal, false otherwise
+         */
+        bool operator==(const Iterator &other)
+        {
+            return this->cur == other.cur;
+        }
+
+        /**
+         * @brief           != operator
+         * @param other     Other iterator const reference
+         * @return          false if equal, true otherwise
+         */
+        bool operator!=(const Iterator &other)
+        {
+            return this->cur != other.cur;
+        }
+
+        /**
+         * @brief           > operator
+         * @param other     Other operator const reference
+         * @return          true if cur > other's cur, false otherwise
+         */
+        bool operator>(const Iterator &other)
+        {
+            return this->cur > other.cur;
+        }
+
+        /**
+         * @brief           >= operator
+         * @param other     Other operator const reference
+         * @return          true if cur >= other's cur, false otherwise
+         */
+        bool operator>=(const Iterator &other)
+        {
+            return this->cur >= other.cur;
+        }
+
+        /**
+         * @brief           < operator
+         * @param other     Other operator const reference
+         * @return          true if cur < other's cur, false otherwise
+         */
+        bool operator<(const Iterator &other)
+        {
+            return this->cur < other.cur;
+        }
+
+        /**
+         * @brief           < operator
+         * @param other     Other operator const reference
+         * @return          true if cur < other's cur, false otherwise
+         */
+        bool operator<=(const Iterator &other)
+        {
+            return this->cur <= other.cur;
+        }
+
+    };
+
+    /**
+     * @brief Const Iterator class
+     */
+    class ConstIterator
+    {
+    private:
+        TYPE *cur;
+    public:
+        typedef TYPE value_type;
+        typedef TYPE &ref;
+        typedef ConstIterator self;
+
+        /**
+         * @brief Default constructor
+         */
+        ConstIterator() : cur(nullptr)
+        {
+
+        }
+
+        /**
+         * @brief           Copy constructor
+         * @param other     ConstIterator
+         */
+        ConstIterator(const ConstIterator &other) : cur(other.cur)
+        {
+
+        }
+
+        /**
+         * @brief           Constructor
+         * @param other     TYPE pointer
+         */
+        explicit ConstIterator(TYPE *other) : cur(other)
+        {
+
+        }
+
+        /**
+         * @brief           = operator
+         * @param other     ConstIterator
+         * @return          ConstIterator reference
+         */
+        ConstIterator &operator=(ConstIterator other)
+        {
+            this->cur = other.cur;
+        }
+
+        /**
+         * @brief   * operator
+         * @return  TYPE reference
+         */
+        ref operator*()
+        {
+            return *this->cur;
+        }
+
+        /**
+         * @brief   -> operator
+         * @return  Const TYPE value
+         */
+        value_type operator->() const
+        {
+            return *this->cur;
+        }
+
+        /**
+         * @brief   ++ operator
+         * @return  ConstIterator
+         */
+        self operator++()
+        {
+            this->cur++;
+            return *this;
+        }
+
+        /**
+         * @brief       += operator
+         * @param num   Number
+         * @return      ConstIterator
+         */
+        self operator+=(size_t num)
+        {
+            this->cur += num;
+            return *this;
+        }
+
+        /**
+         * @brief   -- operator
+         * @return  ConstIterator
+         */
+        self operator--()
+        {
+            Iterator res = *this;
+            this->cur--;
+            return res;
+        }
+
+        /**
+         * @brief       -= operator
+         * @param num   Number
+         * @return      ConstIterator
+         */
+        self operator-=(size_t num)
+        {
+            this->cur -= num;
+            return *this;
+        }
+
+        /**
+         * @brief           == operator
+         * @param other     ConstIterator const reference
+         * @return          true if equal, false otherwise
+         */
+        bool operator==(const ConstIterator &other)
+        {
+            return this->cur == other.cur;
+        }
+
+        /**
+         * @brief           != operator
+         * @param other     ConstIterator const reference
+         * @return          false if equal, true otherwise
+         */
+        bool operator!=(const ConstIterator &other)
+        {
+            return this->cur != other.cur;
+        }
+
+        /**
+         * @brief           > operator
+         * @param other     ConstIterator const reference
+         * @return          true if this > other, false otherwise
+         */
+        bool operator>(const ConstIterator &other)
+        {
+            return this->cur > other.cur;
+        }
+
+        /**
+         * @brief           >= operator
+         * @param other     ConstIterator const reference
+         * @return          true if this >= other, false otherwise
+         */
+        bool operator>=(const ConstIterator &other)
+        {
+            return this->cur >= other.cur;
+        }
+
+        /**
+         * @brief           < operator
+         * @param other     ConstIterator const reference
+         * @return          true if this < other, false otherwise
+         */
+        bool operator<(const ConstIterator &other)
+        {
+            return this->cur < other.cur;
+        }
+
+        /**
+         * @brief           <= operator
+         * @param other     ConstIterator const reference
+         * @return          true if this <= other, false otherwise
+         */
+        bool operator<=(const ConstIterator &other)
+        {
+            return this->cur <= other.cur;
         }
     };
 
-    InputIterator _iterator;
-
-    InputIterator begin() const
-    {
-        return this->_iterator[0];
-    }
-
-    InputIterator end() const
-    {
-        return this->_iterator[this->_size];
-    }
-
-    //Constructors \ Destructors
     /**
-     * @brief   Default constructor
+     * @brief   Const begin function
+     * @return  ConstIterator
      */
-    VLVector() : _size(0), _capacity(DEFAULT_CAPACITY), _values(nullptr)
+    ConstIterator begin() const
     {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return Iterator(this->_heapValues[0]);
+        }
+        else
+        {
+            return Iterator(this->_stackValues[0]);
+        }
+    }
+
+    /**
+     * @brief   Const end function
+     * @return  ConstIterator
+     */
+    ConstIterator end() const
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return Iterator(&this->_heapValues[0] + this->_size);
+        }
+        else
+        {
+            return Iterator(&this->_stackValues[0] + this->_size);
+        }
+    }
+
+    /**
+     * @brief   begin function
+     * @return  Iterator
+     */
+    Iterator begin()
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return Iterator(&this->_heapValues[0]);
+        }
+        else
+        {
+            return Iterator(&this->_stackValues[0]);
+        }
+    }
+
+    /**
+     * @brief   end function
+     * @return  Iterator
+     */
+    Iterator end()
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return Iterator(&this->_heapValues[this->_size]);
+        }
+        else
+        {
+            return Iterator(&this->_stackValues[this->_size]);
+        }
+    }
+
+    /**
+     * @brief   cbegin function
+     * @return  ConstIterator
+     */
+    ConstIterator cbegin()
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return ConstIterator(&this->_heapValues[0]);
+        }
+        else
+        {
+            return ConstIterator(&this->_stackValues[0]);
+        }
+    }
+
+    /**
+     * @brief   cend function
+     * @return  ConstIterator
+     */
+    ConstIterator cend()
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return ConstIterator(&this->_heapValues[0] + this->_size);
+        }
+        else
+        {
+            return ConstIterator(&this->_stackValues[0] + this->_size);
+        }
+    }
+
+    /**
+     * @brief Default constructor
+     */
+    VLVector<TYPE, CAP>() : _size(0),
+                            _capacity(CAP),
+                            _stackCapacity(CAP)
+    {
+
     }
 
     /**
      * @brief       Copy constructor
      * @param v     VLVector
      */
-    VLVector(VLVector const &v) : _size(v._size), _capacity(v._capacity)
+    VLVector<TYPE, CAP>(VLVector const &v) : _size(v._size),
+                                             _capacity(v._capacity),
+                                             _stackCapacity(v._stackCapacity)
     {
-        this->_values = (TYPE *) malloc(v._capacity * sizeof(TYPE));
-        for (int i = 0; i < this->_size; i++)
+        if (this->_capacity > this->_stackCapacity)
         {
-            this[i] = v.at(i);
+            this->_heapValues = new TYPE[this->_capacity];
+            for (size_t i = 0; i < this->_size; i++)
+            {
+                this->_heapValues[i] = v._heapValues[i];
+            }
+        }
+        else
+        {
+            for (size_t i = 0; i < this->_size; i++)
+            {
+                this->_stackValues[i] = v._stackValues[i];
+            }
         }
     }
 
     /**
-     * @brief                   Constructor
-     * @tparam InputIterator
-     * @param first
-     * @param last
+     * @brief                   Constructor 1
+     * @tparam InputIterator    Input iterator
+     * @param first             First iterator
+     * @param last              Last iterator
      */
     template<class InputIterator>
-    VLVector(InputIterator &first, InputIterator &last)
+    VLVector<TYPE, CAP>(InputIterator first, InputIterator last) :_size(0),
+                                                                  _capacity(0),
+                                                                  _stackCapacity(0)
     {
-        this->_capacity = DEFAULT_CAPACITY;
-        this->_size = 0;
+        while (first != last)
+        {
+            this->push_back(*first);
+            ++first;
+        }
     }
 
     /**
-     * @brief Class destructor
+     * @brief Destructor
      */
-    ~VLVector()
+    ~VLVector<TYPE, CAP>()
     {
-        if (_capacity > 0)
+        if (this->_capacity > this->_stackCapacity)
         {
-            delete[] this->_values;
+            delete[] this->_heapValues;
         }
         this->_size = 0;
         this->_capacity = 0;
-        this->_values = nullptr;
     }
-
-    //Size \ capacity
 
     /**
      * @brief   Size of VLVector
@@ -181,22 +632,23 @@ public:
      * @param index     Index
      * @return          Value on the given index
      */
-    TYPE &at(const int index)
+    TYPE &at(size_t index)
     {
-        if (index < 0 or index > this->_size)
+        if (index < 0 || index > this->_size)
         {
-            throw "OUT OF RANGE";
+            throw std::out_of_range(OUT_OF_BOUND_ERROR);
         }
-        return this->_values[index];
-    }
-
-    const TYPE &at(const int index) const
-    {
-        if (index < 0 or index > this->_size)
+        else
         {
-            throw "OUT OF RANGE";
+            if (this->_capacity > this->_stackCapacity)
+            {
+                return this->_heapValues[index];
+            }
+            else
+            {
+                return this->_stackValues[index];
+            }
         }
-        return this->_values[index];
     }
 
     /**
@@ -206,60 +658,443 @@ public:
     void push_back(const TYPE &newValue)
     {
         this->_addNewItem(newValue, this->_size);
+    }
+
+    /**
+     * @brief               Insert 1
+     * @param iterator      Iterator
+     * @param newValue      New value
+     * @return              Iterator
+     */
+    Iterator insert(Iterator iterator, const TYPE &newValue)
+    {
+        size_t itrLoc = this->_itLocation(iterator);
+        if (this->_size == this->_capacity)
+        {
+            _resize(this->_size + 1);
+        }
+        bool found = false;
+        for (size_t i = this->_size; i > 0; i--)
+        {
+            if (i == itrLoc)
+            {
+                if (this->_capacity > this->_stackCapacity)
+                {
+                    this->_heapValues[i] = newValue;
+                }
+                else
+                {
+                    this->_stackValues[i] = newValue;
+                }
+                found = true;
+                break;
+            }
+            else
+            {
+                if (this->_capacity > this->_stackCapacity)
+                {
+                    this->_heapValues[i] = this->_heapValues[i - 1];
+                }
+                else
+                {
+                    this->_stackValues[i] = this->_stackValues[i - 1];
+                }
+            }
+        }
         this->_size++;
+        if (!found)
+        {
+            if (this->_capacity > this->_stackCapacity)
+            {
+                this->_heapValues[0] = newValue;
+            }
+            else
+            {
+                this->_stackValues[0] = newValue;
+            }
+        }
+        return this->_getIterator(itrLoc);
     }
 
-    InputIterator insert(InputIterator iterator)
+    template<class InputIterator>
+    Iterator insert(Iterator iterator, InputIterator first, InputIterator last)
     {
-        return NULL;
+        size_t itrLoc = this->_itLocation(iterator);
+        InputIterator current = first;
+        size_t count = 0;
+        while (current != last)
+        {
+            count++;
+            ++current;
+        }
+        if (this->_size + count > this->_capacity)
+        {
+            this->_resize(this->_size + count);
+        }
+        size_t prevCount = this->_size - 1;
+        size_t addCount = count;
+        TYPE *tmp = new TYPE[this->_size + count];
+        TYPE toAdd;
+        current = last;
+        for (size_t i = this->_size + count; i > 0; i--)
+        {
+            if (i == itrLoc + addCount && addCount != 0)
+            {
+                toAdd = *current;
+                --current;
+                addCount--;
+            }
+            else
+            {
+                toAdd = this->_getValue(prevCount);
+                prevCount--;
+            }
+            tmp[i] = toAdd;
+        }
+        for (size_t i = 0; i < this->_size + count; i++)
+        {
+            if (this->_capacity > this->_stackCapacity)
+            {
+                this->_heapValues[i] = tmp[i];
+            }
+            else
+            {
+                this->_stackValues[i] = tmp[i];
+            }
+        }
+        delete[] tmp;
+        this->_size += count;
+        return this->_getIterator(itrLoc);
     }
 
-    InputIterator insert(InputIterator iterator, int first, int last)
-    {
-        return NULL;
-    }
-
+    /**
+     * @brief Pop up last vector value
+     */
     void pop_back()
     {
-        
+        if (this->_size > 0)
+        {
+            this->_size--;
+            if (this->_size == this->_stackCapacity)
+            {
+                for (size_t i = 0; i < this->_stackCapacity; i++)
+                {
+                    this->_stackValues[i] = this->_heapValues[i];
+                }
+                delete[] this->_heapValues;
+                this->_capacity = this->_stackCapacity;
+            }
+        }
     }
 
-    InputIterator erase(InputIterator iterator)
+    /**
+     * @brief           Erase 1
+     * @param iterator  Iterator
+     * @return          Iterator
+     */
+    Iterator erase(Iterator iterator)
     {
-        return NULL;
+        TYPE *tmp = new TYPE[this->_size];
+        for (size_t i = 0; i < this->_size; i++)
+        {
+            tmp[i] = this->_getValue(i);
+        }
+        this->_size--;
+        bool found = false;
+        size_t i = 0;
+        auto it = this->begin();
+        if (this->_size == this->_stackCapacity)
+        {
+            this->_capacity = this->_stackCapacity;
+        }
+        size_t iterLoc = this->_itLocation(iterator);
+        while (i < this->_size - 1)
+        {
+            if (it == iterator)
+            {
+                found = true;
+            }
+            if (found)
+            {
+                if (this->_capacity > this->_stackCapacity)
+                {
+                    this->_heapValues[i] = tmp[i + 1];
+                }
+                else
+                {
+                    this->_stackValues[i] = tmp[i + 1];
+                }
+            }
+            ++it;
+            i++;
+        }
+        delete[] tmp;
+        if (this->_size == this->_stackCapacity)
+        {
+            delete[] this->_heapValues;
+        }
+        return _getIterator(iterLoc);
     }
 
-    InputIterator erase(InputIterator, int first, int last)
+
+    /**
+     * @brief           Erase 2
+     * @param first     First index
+     * @param last      Last index
+     * @return          Iterator
+     */
+    Iterator erase(Iterator first, Iterator last)
     {
-        return NULL;
+        size_t firstIndex = 0;
+        size_t secondIndex = 0;
+        size_t itrLoc = this->_itLocation(first);
+        Iterator current = first;
+        bool firstFound = false;
+        while (current != last)
+        {
+            if (current == first)
+            {
+                firstFound = true;
+            }
+            if (!firstFound)
+            {
+                firstIndex++;
+            }
+            secondIndex++;
+        }
+        size_t gap = secondIndex - firstIndex;
+        for (size_t i = secondIndex; i < this->_size; i++)
+        {
+            if (this->_capacity > this->_stackCapacity)
+            {
+                this->_heapValues[i - gap] = this->_heapValues[i];
+            }
+            else
+            {
+                this->_stackValues[i - gap] = this->_stackValues[i];
+            }
+            this->_size--;
+        }
+        if (this->_size <= this->_stackCapacity)
+        {
+            for (size_t i = 0; i < this->_size; i++)
+            {
+                this->_stackValues[i] = this->_heapValues[i];
+            }
+            delete[] this->_heapValues;
+        }
+        return this->_getIterator(itrLoc);
     }
 
+    /**
+     * @brief Clear function
+     */
     void clear()
     {
         this->_capacity = 0;
         this->_size = 0;
-        this->_values = nullptr;
+        if (this->_capacity > this->_stackCapacity)
+        {
+            delete[] this->_heapValues;
+        }
     }
 
+    /**
+     * @brief   Get data pointer
+     * @return  Values pointer
+     */
     TYPE *data()
     {
-        return this->_values;
+        if (this->_capacity == this->_stackCapacity)
+        {
+            return this->_stackValues;
+        }
+        else
+        {
+            return this->_heapValues;
+        }
     }
 
-    TYPE &operator[](int index)
+    /**
+     * @brief        = Operator
+     * @param other  Other VLVector
+     * @return       VLVector
+     */
+    VLVector<TYPE, CAP> &operator=(VLVector<TYPE, CAP> other)
     {
-        return this->_values[index];
+        if (this == other)
+        {
+            return *this;
+        }
+        this->_size = other._size;
+        this->_stackCapacity = other._stackCapacity;
+        if (this->_capacity > this->_stackCapacity)
+        {
+            delete[] this->_heapValues;
+        }
+        this->_capacity = other._capacity;
+        this->_heapValues = other._heapValues;
+        this->_stackValues = other._stackValues;
+        return *this;
     }
 
-    bool operator==(const InputIterator &rhs) const
+    /**
+     * @brief           [] operator
+     * @param index     Index
+     * @return          TYPE reference
+     */
+    TYPE &operator[](size_t index)
     {
-        return _values == rhs.ptr;
+        if (index > this->_size)
+        {
+            throw std::out_of_range(OUT_OF_BOUND_ERROR);
+        }
+        else
+        {
+            if (this->_capacity > this->_stackCapacity)
+            {
+                return this->_heapValues[index];
+            }
+            else
+            {
+                return this->_stackValues[index];
+            }
+        }
     }
 
-    bool operator!=(const InputIterator &rhs) const
+    /**
+     * @brief           const [] operator
+     * @param index     Index
+     * @return          TYPE reference
+     */
+    TYPE operator[](size_t index) const
     {
-        return *this != rhs;
+        if (index > this->_size)
+        {
+            throw std::out_of_range(OUT_OF_BOUND_ERROR);
+        }
+        else
+        {
+            if (this->_capacity > this->_stackCapacity)
+            {
+                return this->_heapValues[index];
+            }
+            else
+            {
+                return this->_stackValues[index];
+            }
+        }
+    }
+
+    /**
+     * @brief           == operator
+     * @param other     Other VLVector
+     * @return          true if equal, false otherwise
+     */
+    bool operator==(VLVector other)
+    {
+        if (this->_size != other._size)
+        {
+            return false;
+        }
+        else
+        {
+            for (size_t i = 0; i < this->_size; i++)
+            {
+                if (this->_capacity > this->_stackCapacity)
+                {
+                    if (this->_heapValues[i] != other._heapValues[i])
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (this->_stackValues[i] != other._stackValues[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @brief           != operator
+     * @param other     Other VLVector
+     * @return          false if equal, true otherwise
+     */
+    bool operator!=(VLVector other)
+    {
+        if (this->_size != other._size)
+        {
+            return true;
+        }
+        else
+        {
+            for (size_t i = 0; i < this->_size; i++)
+            {
+                if (this->_capacity > this->_stackCapacity)
+                {
+                    if (this->_heapValues[i] != other._heapValues[i])
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (this->_stackValues[i] != other._stackValues[i])
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+private:
+    /**
+     * @brief       Get iterator pointer location
+     * @param it    Iterator
+     * @return      size_t
+     */
+    size_t _itLocation(Iterator it)
+    {
+        auto tmp = this->begin();
+        size_t index = 0;
+        while (tmp != it)
+        {
+            index++;
+            ++tmp;
+        }
+        return index;
+    }
+
+    Iterator _getIterator(size_t iterLoc)
+    {
+        if (_capacity > _stackCapacity)
+        {
+            return Iterator(&this->_heapValues[iterLoc]);
+        }
+        else
+        {
+            return Iterator(&this->_stackValues[iterLoc]);
+        }
+    }
+
+    TYPE _getValue(size_t n)
+    {
+        if (this->_capacity > this->_stackCapacity)
+        {
+            return this->_heapValues[n];
+        }
+        else
+        {
+            return this->_stackValues[n];
+        }
     }
 };
 
-#endif //EXAM_VLVECTOR_H
+#endif

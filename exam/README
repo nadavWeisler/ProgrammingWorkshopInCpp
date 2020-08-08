@@ -1,0 +1,42 @@
+Name: nadav weisler
+ID: 316493758
+CS-USER: weisler
+
+SpreaderDetectorBackend
+-----------------------------
+Please explain how you dealt with the following parts of the exam.
+
+Input processing
+----------------
+First i read people file, I created two data structures for it, one is pointers array
+of Person struct (which represent one person) and the other is BST(binary search tree) ordered
+by Person ID and contain Person pointer. Each Person got is data stored in Person object
+with infection chance initialized to to 0.
+
+If there is n people in te people file the time complicity of people input process is O(n*log(n))
+
+After that, I read the meeting file, for each meeting I update the infected chance for each
+infected Id. I find each person (infects and infected Person object in the BST (O(log(n))) and
+than update the infected chance by the distance time and infects chance.
+
+If there is n people and m meetings the time complicity of meeting input process is
+O(m*2log(n)) = O(m*log(n))
+
+
+Data storing
+------------
+As written in the previous section I stored the data in pointers array of Person.
+Furthermore I stored also pointers of Person in BST implantation, but only for the reading of
+the meetings file, Its got free write after that.
+
+So if there is n people the space complicity is O(2n) = O(n).
+
+Results sorting
+---------------
+
+I sorted the data using the famous and efficient quick-sort algorithm on the people array by
+the infection chance property. If n is the length of the people array the time complicity of
+quick-sort implantation on people array is O(n*log(n)).
+
+
+
